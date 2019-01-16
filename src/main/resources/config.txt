@@ -1,0 +1,1 @@
+mybatis-generator:generate    //自动生成对象文件maven配置命令
