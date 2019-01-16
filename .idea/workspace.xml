@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38d7d852-c40c-4fc8-ad37-d87aaed38746" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/flash/controller/viewObject/UserVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flash/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flash/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flash/controller/viewObject/UserVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flash/controller/viewObject/UserVO.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,16 +36,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="983" />
+          <entry key="java" value="1023" />
           <entry key="properties" value="237" />
-          <entry key="txt" value="49" />
+          <entry key="txt" value="61" />
           <entry key="xml" value="758" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="983" />
-          <entry key="PLAIN_TEXT" value="49" />
+          <entry key="JAVA" value="1023" />
+          <entry key="PLAIN_TEXT" value="61" />
           <entry key="Properties" value="237" />
           <entry key="XML" value="758" />
         </counts>
@@ -92,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+            <state relative-caret-position="311">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/controller/viewObject/UserVO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="297">
+              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
                 <element signature="e#285#286#0" expanded="true" />
                 <element signature="e#310#311#0" expanded="true" />
@@ -122,10 +121,10 @@
                 <element signature="e#565#566#0" expanded="true" />
                 <element signature="e#607#608#0" expanded="true" />
                 <element signature="e#643#644#0" expanded="true" />
-                <element signature="e#673#674#0" expanded="true" />
-                <element signature="e#699#700#0" expanded="true" />
-                <element signature="e#737#738#0" expanded="true" />
-                <element signature="e#767#768#0" expanded="true" />
+                <element signature="e#609#610#0" expanded="true" />
+                <element signature="e#635#636#0" expanded="true" />
+                <element signature="e#674#675#0" expanded="true" />
+                <element signature="e#704#705#0" expanded="true" />
                 <element signature="e#802#803#0" expanded="true" />
                 <element signature="e#833#834#0" expanded="true" />
                 <element signature="e#881#882#0" expanded="true" />
@@ -168,8 +167,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/service/model/UserModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="12" selection-end-column="34" />
+            <state relative-caret-position="41">
+              <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
               <folding>
                 <element signature="e#281#282#0" expanded="true" />
                 <element signature="e#306#307#0" expanded="true" />
@@ -183,10 +182,9 @@
                 <element signature="e#561#562#0" expanded="true" />
                 <element signature="e#603#604#0" expanded="true" />
                 <element signature="e#639#640#0" expanded="true" />
-                <element signature="e#669#670#0" expanded="true" />
-                <element signature="e#695#696#0" expanded="true" />
                 <element signature="e#733#734#0" expanded="true" />
-                <element signature="e#763#764#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#802#803#0" expanded="true" />
                 <element signature="e#798#799#0" expanded="true" />
                 <element signature="e#829#830#0" expanded="true" />
                 <element signature="e#877#878#0" expanded="true" />
@@ -238,13 +236,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/flash/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/flash/service/model/UserModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/flash/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/UserPasswordDOMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/flash/dao/UserPasswordDOMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/flash/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/flash/controller/viewObject/UserVO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/flash/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/flash/service/model/UserModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/flash/controller/viewObject/UserVO.java" />
       </list>
     </option>
   </component>
@@ -418,7 +416,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547631747009" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547631865439" />
     <property name="last_opened_file_path" value="D:/git" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -523,7 +521,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547622583221</updated>
-      <workItem from="1547622586378" duration="8039000" />
+      <workItem from="1547622586378" duration="8294000" />
     </task>
     <task id="LOCAL-00001" summary="整合mybatis">
       <created>1547630133492</created>
@@ -539,11 +537,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547631279189</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="领域模型将对象转换">
+      <created>1547631775004</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1547631775004</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8039000" />
+    <option name="totallyTimeSpent" value="8294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -555,7 +560,7 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Capture Tool" />
       <window_info id="Web" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27878466" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27878466" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Spring" />
       <window_info anchor="bottom" id="Terminal" />
@@ -567,7 +572,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32962137" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.29654405" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.29654405" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -592,7 +597,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="整合mybatis" />
     <MESSAGE value="查询第一个用户数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="查询第一个用户数据" />
+    <MESSAGE value="领域模型将对象转换" />
+    <option name="LAST_COMMIT_MESSAGE" value="领域模型将对象转换" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/dataObject/UserDOExample.java">
@@ -740,8 +746,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/service/model/UserModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="12" selection-end-column="34" />
+        <state relative-caret-position="41">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
           <folding>
             <element signature="e#281#282#0" expanded="true" />
             <element signature="e#306#307#0" expanded="true" />
@@ -755,10 +761,9 @@
             <element signature="e#561#562#0" expanded="true" />
             <element signature="e#603#604#0" expanded="true" />
             <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#695#696#0" expanded="true" />
             <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#802#803#0" expanded="true" />
             <element signature="e#798#799#0" expanded="true" />
             <element signature="e#829#830#0" expanded="true" />
             <element signature="e#877#878#0" expanded="true" />
@@ -779,10 +784,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/controller/viewObject/UserVO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="297">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
             <element signature="e#285#286#0" expanded="true" />
             <element signature="e#310#311#0" expanded="true" />
@@ -796,24 +811,14 @@
             <element signature="e#565#566#0" expanded="true" />
             <element signature="e#607#608#0" expanded="true" />
             <element signature="e#643#644#0" expanded="true" />
-            <element signature="e#673#674#0" expanded="true" />
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#609#610#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
             <element signature="e#802#803#0" expanded="true" />
             <element signature="e#833#834#0" expanded="true" />
             <element signature="e#881#882#0" expanded="true" />
             <element signature="e#921#922#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/flash/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
