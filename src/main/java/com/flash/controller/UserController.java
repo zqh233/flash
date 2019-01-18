@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Controller("user")
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
@@ -46,23 +46,5 @@ public class UserController {
         BeanUtils.copyProperties(userModel, userVO);
         return userVO;
     }
-
-    /**
-     *  定义execptionhandler解决未被controller层吸收的Execption
-     */
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Object HandlerExecption(HttpServletRequest request, Exception ex) {
-        BusinessExecption businessExecption = (BusinessExecption) ex;
-        CommonReturn commonReturn = new CommonReturn();
-        commonReturn.setStatus("fail");
-        Map<String, Object> responseData = new HashMap<>();
-        responseData.put("errorCode", businessExecption.getErrorCode());
-        responseData.put("errorMsg", businessExecption.getErrorMsg());
-        commonReturn.setData(responseData);
-        return commonReturn;
-    }
-
 
 }

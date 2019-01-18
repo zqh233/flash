@@ -3,9 +3,11 @@ package com.flash.error;
 public enum EmBusinessError implements CommonError
 {
     //通用错误类型
-    PARAMETER_VALIDATION_ERROR(000001, "参数不合法"),
+    PARAMETER_VALIDATION_ERROR(100001, "参数不合法"),
+    //未知错误
+    UNKNOWN_ERROR(100002,"未知错误"),
 
-    USER_NOT_EXIST(100001, "用户不存在")
+    USER_NOT_EXIST(200001, "用户不存在")
     ;
 
     private int errorCode;
