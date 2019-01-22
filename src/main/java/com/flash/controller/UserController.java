@@ -19,8 +19,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+//@CrossOrigin解决跨域问题
+
 @Controller("user")
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController extends BaseController{
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -40,9 +43,9 @@ public class UserController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/getOtp", method = {RequestMethod.POST}, consumes={CONTENT_TYPE_FORMED})
+    @RequestMapping(value="/getotp",method={RequestMethod.POST},consumes={CONTENT_TYPE_FORMED})
     @ResponseBody
-    public CommonReturn getOtp(@RequestParam(name="telephone") String telephone) {
+    public CommonReturn getOtp(@RequestParam(name="telphone")String telephone) throws Exception{
         //根据需要的规则生成Otp验证码
         Random random = new Random();
         int randomInt = random.nextInt(999999);
