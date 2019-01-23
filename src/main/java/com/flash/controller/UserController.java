@@ -1,11 +1,13 @@
 package com.flash.controller;
 
+import com.alibaba.druid.util.StringUtils;
 import com.flash.Response.CommonReturn;
 import com.flash.controller.viewObject.UserVO;
 import com.flash.error.BusinessExecption;
 import com.flash.error.EmBusinessError;
 import com.flash.service.UserService;
 import com.flash.service.model.UserModel;
+import org.apache.tomcat.util.security.MD5Encoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -38,6 +40,32 @@ public class UserController extends BaseController{
     private HttpServletRequest httpServletRequest;
 
     /****
+     * 用户注册借口
+     */
+    @RequestMapping(value="/register",method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
+    public CommonReturn register(@RequestParam(name="name") String name,@RequestParam(name = "telphone") String telphone,
+                                 @RequestParam(name="otpCode") String otpCode,
+                                 @RequestParam(name = "age") Integer age,
+                                 @RequestParam(name="gender")Integer gender,
+                                 @RequestParam(name="password")String password) throws Exception {
+
+        //验证手机号和otpcode相符合
+        String isSessionOtpCode = (String) this.httpServletRequest.getSession().getAttribute(telphone);
+        if(!StringUtils.equals(otpCode,isSessionOtpCode)) {
+            throw new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR,"短信验证吗错误");
+        }
+        UserModel userModel = new UserModel();
+        userModel.setName(name);
+        userModel.setAge(age);
+        userModel.setGender(gender);
+        userModel.setTelphone(telphone);
+        userModel.setRegisterMode("bytelphone");
+        userModel.setEncrptPassword(MD5Encoder.encode(password.getBytes()));
+        userService.register(userModel);
+        return CommonReturn.create(null);
+    }
+
+    /****
      * 用户获取otp短信
      * @param telephone
      * @return
@@ -55,6 +83,8 @@ public class UserController extends BaseController{
         httpServletRequest.getSession().setAttribute(telephone, otpCode);
 
         //将otp验证码通过短信通道发给用户，需要短信通道（没钱买）
+        System.out.println(telephone);
+        System.out.println(otpCode);
         logger.info("会员手机号:", telephone);
         logger.info("otpCode为:", otpCode);
 
