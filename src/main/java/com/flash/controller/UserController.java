@@ -2,6 +2,7 @@ package com.flash.controller;
 
 import com.alibaba.druid.util.StringUtils;
 import com.flash.Response.CommonReturn;
+import com.flash.Utils.MD5;
 import com.flash.controller.viewObject.UserVO;
 import com.flash.error.BusinessExecption;
 import com.flash.error.EmBusinessError;
@@ -42,6 +43,16 @@ public class UserController extends BaseController{
     @Autowired
     private HttpServletRequest httpServletRequest;
 
+    @RequestMapping(value = "/login", method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
+    public CommonReturn login(@RequestParam(name = "telphone") String telphone, @RequestParam(name="password") String password) throws Exception{
+        if(StringUtils.isEmpty(telphone) || StringUtils.isEmpty(password)) {
+            throw  new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+
+        //用户登录服务，用来检验用户登录是否合法
+        return CommonReturn.create(null);
+    }
+
     /****
      * 用户注册借口
      * 跨越请求问题：ajax请求不能对session共享
@@ -66,19 +77,12 @@ public class UserController extends BaseController{
         userModel.setGender(new Byte(String.valueOf(gender.intValue())));
         userModel.setTelphone(telphone);
         userModel.setRegisterMode("bytelphone");
-        userModel.setEncrptPassword(this.encodeByMD5(password));
+        userModel.setEncrptPassword(MD5.encodeByMD5(password));
         userService.register(userModel);
         return CommonReturn.create(null);
     }
 
-    public String encodeByMD5(String password) throws Exception{
-        //确定计算方法
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        BASE64Encoder base64Encoder = new BASE64Encoder();
-        //加密字符串
-        String newPassword = base64Encoder.encode(md5.digest(password.getBytes("utf-8")));
-        return newPassword;
-    }
+
 
     /****
      * 用户获取otp短信

@@ -14,6 +14,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.misc.BASE64Encoder;
+
+import java.security.MessageDigest;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -90,4 +93,6 @@ public class UserServiceImpl implements UserService {
     }
     return userModel;
   }
+
+
 }
