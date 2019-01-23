@@ -9,4 +9,6 @@ public interface UserService {
     UserModel getUserById(Integer id);
 
     void register(UserModel userModel) throws Exception;
+
+    UserModel validateLogin(String telphone, String encrptPassword) throws Exception;
 }

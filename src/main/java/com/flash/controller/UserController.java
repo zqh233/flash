@@ -36,10 +36,17 @@ public class UserController extends BaseController{
     private HttpServletRequest httpServletRequest;
 
     @RequestMapping(value = "/login", method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
+    @ResponseBody
     public CommonReturn login(@RequestParam(name = "telphone") String telphone, @RequestParam(name="password") String password) throws Exception{
         if(StringUtils.isEmpty(telphone) || StringUtils.isEmpty(password)) {
             throw  new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
+
+        UserModel userModel = userService.validateLogin(telphone, MD5.encodeByMD5(password));
+
+        //将用户登录凭证加入到用户登录的session里
+        this.httpServletRequest.getSession().setAttribute("IS_LOGIN", true);
+        this.httpServletRequest.getSession().setAttribute("LOGIN_USER", userModel);
 
         //用户登录服务，用来检验用户登录是否合法
         return CommonReturn.create(null);
@@ -52,6 +59,7 @@ public class UserController extends BaseController{
      * ajax请求中需要增加   xhrFields:{withCredentials:true}   解决跨域
      */
     @RequestMapping(value="/register",method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
+    @ResponseBody
     public CommonReturn register(@RequestParam(name="name") String name,@RequestParam(name = "telphone") String telphone,
                                  @RequestParam(name="otpCode") String otpCode,
                                  @RequestParam(name = "age") Integer age,

@@ -17,8 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
-  @Autowired private UserDOMapper userDOMapper;
-  @Autowired private UserPasswordDOMapper userPasswordDOMapper;
+  @Autowired
+  private UserDOMapper userDOMapper;
+  @Autowired
+  private UserPasswordDOMapper userPasswordDOMapper;
 
   @Override
   public UserModel getUserById(Integer id) {
@@ -52,12 +54,27 @@ public class UserServiceImpl implements UserService {
     } catch (Exception e) {
       throw new BusinessExecption(EmBusinessError.TELPHOE_EXIST);
     }
-
-
     userModel.setId(userDO.getId());
 
     UserPasswordDO userPasswordDO = UserPasswordDO.convertPasswordFromModel(userModel);
     userPasswordDOMapper.insertSelective(userPasswordDO);
+  }
+
+  @Override
+  public UserModel validateLogin(String telphone, String encrptPassword) throws Exception {
+      //获取用户信息
+      UserDO userDO = userDOMapper.selectByTelphone(telphone);
+      if(userDO == null) {
+          throw new BusinessExecption(EmBusinessError.USER_LOGIN_ERROR);
+      }
+      //获取用户密码
+      UserPasswordDO userPasswordDO = userPasswordDOMapper.selectByUserId(userDO.getId());
+
+      UserModel userModel = UserModel.convertFromDataObject(userDO, userPasswordDO);
+      if(!StringUtils.equals(encrptPassword, userModel.getEncrptPassword())) {
+          throw new BusinessExecption(EmBusinessError.USER_LOGIN_ERROR);
+      }
+      return userModel;
   }
 
 }
