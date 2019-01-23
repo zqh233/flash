@@ -8,11 +8,15 @@ import com.flash.error.BusinessExecption;
 import com.flash.error.EmBusinessError;
 import com.flash.service.UserService;
 import com.flash.service.model.UserModel;
+import com.flash.validator.ValidationResult;
+import com.flash.validator.ValidatorImpl;
 import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.xml.validation.Validator;
 
 
 @Service
@@ -21,6 +25,8 @@ public class UserServiceImpl implements UserService {
   private UserDOMapper userDOMapper;
   @Autowired
   private UserPasswordDOMapper userPasswordDOMapper;
+  @Autowired
+  private ValidatorImpl validator;
 
   @Override
   public UserModel getUserById(Integer id) {
@@ -39,12 +45,17 @@ public class UserServiceImpl implements UserService {
     if(userModel == null) {
       throw new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR);
     }
-    if(StringUtils.isEmpty(userModel.getName())
+    /*if(StringUtils.isEmpty(userModel.getName())
         || userModel.getGender() == null
         || userModel.getAge() == null
         || StringUtils.isEmpty(userModel.getTelphone())
         || StringUtils.isEmpty(userModel.getEncrptPassword())) {
       throw new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+    }*/
+    //优化校验为空
+      ValidationResult result = validator.validate(userModel);
+    if(result.getHasErrors()) {
+        throw new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR);
     }
 
     //实现model-》dataObject

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Random;
 
 //@CrossOrigin解决跨域问题
+//未写注解@ResponseBody会造成ajax请求发起了，但是前端接受返回报404错误
 
 @Controller("user")
 @RequestMapping("/user")
