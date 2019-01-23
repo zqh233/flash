@@ -15,8 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -25,7 +28,7 @@ import java.util.Random;
 
 @Controller("user")
 @RequestMapping("/user")
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class UserController extends BaseController{
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -41,6 +44,9 @@ public class UserController extends BaseController{
 
     /****
      * 用户注册借口
+     * 跨越请求问题：ajax请求不能对session共享
+     * crossOrigion无法对session共享，共享需要指定范围(设置allowCredentials,allowedHeaders)
+     * ajax请求中需要增加   xhrFields:{withCredentials:true}   解决跨域
      */
     @RequestMapping(value="/register",method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
     public CommonReturn register(@RequestParam(name="name") String name,@RequestParam(name = "telphone") String telphone,
@@ -52,7 +58,7 @@ public class UserController extends BaseController{
         //验证手机号和otpcode相符合
         String isSessionOtpCode = (String) this.httpServletRequest.getSession().getAttribute(telphone);
         if(!StringUtils.equals(otpCode,isSessionOtpCode)) {
-            throw new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR,"短信验证吗错误");
+            throw new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR,"短信验证码错误");
         }
         UserModel userModel = new UserModel();
         userModel.setName(name);
@@ -60,9 +66,18 @@ public class UserController extends BaseController{
         userModel.setGender(new Byte(String.valueOf(gender.intValue())));
         userModel.setTelphone(telphone);
         userModel.setRegisterMode("bytelphone");
-        userModel.setEncrptPassword(MD5Encoder.encode(password.getBytes()));
+        userModel.setEncrptPassword(this.encodeByMD5(password));
         userService.register(userModel);
         return CommonReturn.create(null);
+    }
+
+    public String encodeByMD5(String password) throws Exception{
+        //确定计算方法
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        BASE64Encoder base64Encoder = new BASE64Encoder();
+        //加密字符串
+        String newPassword = base64Encoder.encode(md5.digest(password.getBytes("utf-8")));
+        return newPassword;
     }
 
     /****

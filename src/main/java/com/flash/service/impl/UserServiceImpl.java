@@ -9,13 +9,11 @@ import com.flash.error.EmBusinessError;
 import com.flash.service.UserService;
 import com.flash.service.model.UserModel;
 import org.apache.commons.lang3.StringUtils;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.jws.soap.SOAPBinding;
-import java.beans.Transient;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -42,15 +40,18 @@ public class UserServiceImpl implements UserService {
     if(StringUtils.isEmpty(userModel.getName())
         || userModel.getGender() == null
         || userModel.getAge() == null
-        || StringUtils.isEmpty(userModel.getTelphone())) {
+        || StringUtils.isEmpty(userModel.getTelphone())
+        || StringUtils.isEmpty(userModel.getEncrptPassword())) {
       throw new BusinessExecption(EmBusinessError.PARAMETER_VALIDATION_ERROR);
     }
 
     //实现model-》dataObject
-    UserDO userDO = convertFromModel(userModel);
+    UserDO userDO = this.convertFromModel(userModel);
     userDOMapper.insertSelective(userDO);
 
-    UserPasswordDO userPasswordDO = convertPasswordFromModel(userModel);
+    userModel.setId(userDO.getId());
+
+    UserPasswordDO userPasswordDO = this.convertPasswordFromModel(userModel);
     userPasswordDOMapper.insertSelective(userPasswordDO);
   }
 
@@ -69,7 +70,7 @@ public class UserServiceImpl implements UserService {
       return null;
     }
     UserDO userDO = new UserDO();
-    BeanUtils.copyProperties(userDO, userModel);
+    BeanUtils.copyProperties(userModel, userDO);
     return userDO;
   }
 
