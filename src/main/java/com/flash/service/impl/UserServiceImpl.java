@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
     try {
       userDOMapper.insertSelective(userDO);
     } catch (Exception e) {
-      throw new BusinessExecption(EmBusinessError.TELPHOE_EXIST);
+      throw new BusinessExecption(EmBusinessError.TELPHOE_EXIST,result.getErrMsg());
     }
     userModel.setId(userDO.getId());
 

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.xml.transform.Source;
 
-public class UserModel implements Source {
+public class UserModel {
 
     private Integer id;
     //notblack表示不能为空和空字符串
