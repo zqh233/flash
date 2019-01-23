@@ -10,13 +10,10 @@ import com.flash.service.UserService;
 import com.flash.service.model.UserModel;
 import org.apache.commons.lang3.StringUtils;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sun.misc.BASE64Encoder;
 
-import java.security.MessageDigest;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -31,7 +28,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
     UserPasswordDO userPasswordDO = userPasswordDOMapper.selectByUserId(userDO.getId());
-    return convertFromDataObject(userDO, userPasswordDO);
+    return UserModel.convertFromDataObject(userDO, userPasswordDO);
   }
 
   @Override
@@ -49,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     //实现model-》dataObject
-    UserDO userDO = this.convertFromModel(userModel);
+    UserDO userDO = UserDO.convertFromModel(userModel);
     try {
       userDOMapper.insertSelective(userDO);
     } catch (Exception e) {
@@ -59,40 +56,8 @@ public class UserServiceImpl implements UserService {
 
     userModel.setId(userDO.getId());
 
-    UserPasswordDO userPasswordDO = this.convertPasswordFromModel(userModel);
+    UserPasswordDO userPasswordDO = UserPasswordDO.convertPasswordFromModel(userModel);
     userPasswordDOMapper.insertSelective(userPasswordDO);
   }
-
-  private UserPasswordDO convertPasswordFromModel(UserModel userModel) {
-    if(userModel == null) {
-      return null;
-    }
-    UserPasswordDO userPasswordDO = new UserPasswordDO();
-    userPasswordDO.setEncrpt(userModel.getEncrptPassword());
-    userPasswordDO.setUserId(userModel.getId());
-    return userPasswordDO;
-  }
-
-  private UserDO convertFromModel(UserModel userModel) {
-    if(userModel == null) {
-      return null;
-    }
-    UserDO userDO = new UserDO();
-    BeanUtils.copyProperties(userModel, userDO);
-    return userDO;
-  }
-
-  private UserModel convertFromDataObject(UserDO userDO, UserPasswordDO userPasswordDO) {
-    if (userDO == null) {
-      return null;
-    }
-    UserModel userModel = new UserModel();
-    BeanUtils.copyProperties(userDO, userModel);
-    if (userPasswordDO != null) {
-      userModel.setEncrptPassword(userPasswordDO.getEncrpt());
-    }
-    return userModel;
-  }
-
 
 }

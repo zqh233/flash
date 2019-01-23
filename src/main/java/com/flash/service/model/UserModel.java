@@ -1,5 +1,9 @@
 package com.flash.service.model;
 
+import com.flash.dataObject.UserDO;
+import com.flash.dataObject.UserPasswordDO;
+import org.springframework.beans.BeanUtils;
+
 public class UserModel {
 
     private Integer id;
@@ -74,5 +78,17 @@ public class UserModel {
 
     public void setEncrptPassword(String encrptPassword) {
         this.encrptPassword = encrptPassword;
+    }
+
+    public static UserModel convertFromDataObject(UserDO userDO, UserPasswordDO userPasswordDO) {
+        if (userDO == null) {
+            return null;
+        }
+        UserModel userModel = new UserModel();
+        BeanUtils.copyProperties(userDO, userModel);
+        if (userPasswordDO != null) {
+            userModel.setEncrptPassword(userPasswordDO.getEncrpt());
+        }
+        return userModel;
     }
 }

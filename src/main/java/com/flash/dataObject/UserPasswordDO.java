@@ -1,5 +1,7 @@
 package com.flash.dataObject;
 
+import com.flash.service.model.UserModel;
+
 public class UserPasswordDO {
     /**
      *
@@ -98,5 +100,15 @@ public class UserPasswordDO {
      */
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public static UserPasswordDO convertPasswordFromModel(UserModel userModel) {
+        if(userModel == null) {
+            return null;
+        }
+        UserPasswordDO userPasswordDO = new UserPasswordDO();
+        userPasswordDO.setEncrpt(userModel.getEncrptPassword());
+        userPasswordDO.setUserId(userModel.getId());
+        return userPasswordDO;
     }
 }

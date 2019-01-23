@@ -1,5 +1,8 @@
 package com.flash.controller.viewObject;
 
+import com.flash.service.model.UserModel;
+import org.springframework.beans.BeanUtils;
+
 public class UserVO {
     private Integer id;
     private String name;
@@ -45,6 +48,15 @@ public class UserVO {
 
     public void setTelphone(String telphone) {
         this.telphone = telphone;
+    }
+
+    public static UserVO convertFromModel(UserModel userModel) {
+        if(userModel == null) {
+            return null;
+        }
+        UserVO userVO = new UserVO();
+        BeanUtils.copyProperties(userModel, userVO);
+        return userVO;
     }
 
 }

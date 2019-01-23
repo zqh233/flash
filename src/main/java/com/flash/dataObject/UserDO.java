@@ -1,5 +1,8 @@
 package com.flash.dataObject;
 
+import com.flash.service.model.UserModel;
+import org.springframework.beans.BeanUtils;
+
 public class UserDO {
     /**
      *
@@ -230,5 +233,14 @@ public class UserDO {
      */
     public void setThirdPartyId(String thirdPartyId) {
         this.thirdPartyId = thirdPartyId == null ? null : thirdPartyId.trim();
+    }
+
+    public static UserDO convertFromModel(UserModel userModel) {
+        if(userModel == null) {
+            return null;
+        }
+        UserDO userDO = new UserDO();
+        BeanUtils.copyProperties(userModel, userDO);
+        return userDO;
     }
 }
