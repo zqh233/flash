@@ -57,7 +57,7 @@ public class UserController extends BaseController{
         UserModel userModel = new UserModel();
         userModel.setName(name);
         userModel.setAge(age);
-        userModel.setGender(gender);
+        userModel.setGender(new Byte(String.valueOf(gender.intValue())));
         userModel.setTelphone(telphone);
         userModel.setRegisterMode("bytelphone");
         userModel.setEncrptPassword(MD5Encoder.encode(password.getBytes()));
@@ -83,10 +83,10 @@ public class UserController extends BaseController{
         httpServletRequest.getSession().setAttribute(telephone, otpCode);
 
         //将otp验证码通过短信通道发给用户，需要短信通道（没钱买）
-        System.out.println(telephone);
-        System.out.println(otpCode);
-        logger.info("会员手机号:", telephone);
-        logger.info("otpCode为:", otpCode);
+        /*System.out.println(telephone);
+        System.out.println(otpCode);*/
+        logger.info("会员手机号:{}", telephone);
+        logger.info("otpCode为:{}", otpCode);
 
         return CommonReturn.create(null);
     }
