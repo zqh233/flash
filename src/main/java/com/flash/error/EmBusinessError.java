@@ -7,7 +7,8 @@ public enum EmBusinessError implements CommonError
     //未知错误
     UNKNOWN_ERROR(100002,"未知错误"),
 
-    USER_NOT_EXIST(200001, "用户不存在")
+    USER_NOT_EXIST(200001, "用户不存在"),
+    TELPHOE_EXIST(200002, "手机号已存在")
     ;
 
     private int errorCode;

@@ -47,7 +47,12 @@ public class UserServiceImpl implements UserService {
 
     //实现model-》dataObject
     UserDO userDO = this.convertFromModel(userModel);
-    userDOMapper.insertSelective(userDO);
+    try {
+      userDOMapper.insertSelective(userDO);
+    } catch (Exception e) {
+      throw new BusinessExecption(EmBusinessError.TELPHOE_EXIST);
+    }
+
 
     userModel.setId(userDO.getId());
 
