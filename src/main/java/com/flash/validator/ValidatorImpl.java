@@ -8,6 +8,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import java.util.Set;
 
+//加Component确保spring能扫描到bean
 @Component
 public class ValidatorImpl implements InitializingBean {
     private Validator validator;
