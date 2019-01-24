@@ -2,7 +2,7 @@ package com.flash.service.model;
 
 import java.math.BigDecimal;
 
-public class itemModel {
+public class ItemModel {
 
     private Integer id;
 
