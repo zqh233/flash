@@ -1,5 +1,9 @@
 package com.flash.dataObject;
 
+import com.flash.service.model.ItemModel;
+import com.flash.service.model.UserModel;
+import org.springframework.beans.BeanUtils;
+
 public class ItemDO {
     /**
      *
@@ -197,5 +201,14 @@ public class ItemDO {
      */
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+    }
+
+    public static ItemDO convertFromModel(ItemModel itemModel) {
+        if(itemModel == null) {
+            return null;
+        }
+        ItemDO itemDO = new ItemDO();
+        BeanUtils.copyProperties(itemModel, itemDO);
+        return itemDO;
     }
 }

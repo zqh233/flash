@@ -1,5 +1,12 @@
 package com.flash.service.model;
 
+import com.flash.dataObject.ItemDO;
+import com.flash.dataObject.ItemStockDO;
+import org.springframework.beans.BeanUtils;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class ItemModel {
@@ -9,21 +16,26 @@ public class ItemModel {
     /**
      * 商品名称
      */
+    @NotBlank(message = "商品名称不能为空")
     private String name;
 
     /**
      * 商品价格
      */
+    @NotNull(message = "用户名不能为空")
+    @Min(value = 0, message = "商品价格不能小于0")
     private BigDecimal price;
 
     /**
      * 商品库存
      */
+    @NotNull(message = "用户名不能不填")
     private Integer stock;
 
     /**
      * 商品描述
      */
+    @NotBlank(message = "商品描述不能为空")
     private String description;
 
     /**
@@ -34,6 +46,7 @@ public class ItemModel {
     /**
      * 商品图片
      */
+    @NotBlank(message = "商品图片不能为空")
     private String imgUrl;
 
 
@@ -91,6 +104,18 @@ public class ItemModel {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public static ItemModel convertFromDataObject(ItemDO itemDo, ItemStockDO itemStockDO) {
+        if (itemDo == null) {
+            return null;
+        }
+        ItemModel itemModel = new ItemModel();
+        BeanUtils.copyProperties(itemDo, itemModel);
+        if (itemStockDO != null) {
+            itemModel.setStock(itemStockDO.getStock());
+        }
+        return itemModel;
     }
 }
 

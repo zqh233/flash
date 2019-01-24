@@ -1,5 +1,7 @@
 package com.flash.dataObject;
 
+import com.flash.service.model.ItemModel;
+
 public class ItemStockDO {
     /**
      *
@@ -98,5 +100,15 @@ public class ItemStockDO {
      */
     public void setItemId(Integer itemId) {
         this.itemId = itemId;
+    }
+
+    public static ItemStockDO convertItemStockFromModel(ItemModel itemModel) {
+        if(itemModel == null) {
+            return null;
+        }
+        ItemStockDO itemStockDO = new ItemStockDO();
+        itemStockDO.setStock(itemModel.getStock());
+        itemStockDO.setItemId(itemModel.getId());
+        return itemStockDO;
     }
 }
