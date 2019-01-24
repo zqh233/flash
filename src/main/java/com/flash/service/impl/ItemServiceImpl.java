@@ -10,6 +10,7 @@ import com.flash.service.ItemService;
 import com.flash.service.model.ItemModel;
 import com.flash.validator.ValidationResult;
 import com.flash.validator.ValidatorImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +48,8 @@ public class ItemServiceImpl implements ItemService {
         //返回数据
         return this.getItemById(itemModel.getId());
     }
+
+
 
     @Override
     public List<ItemModel> listItem() {

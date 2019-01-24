@@ -112,6 +112,7 @@ public class ItemModel {
         }
         ItemModel itemModel = new ItemModel();
         BeanUtils.copyProperties(itemDo, itemModel);
+        itemModel.setPrice(BigDecimal.valueOf(itemDo.getPrice()));
         if (itemStockDO != null) {
             itemModel.setStock(itemStockDO.getStock());
         }
