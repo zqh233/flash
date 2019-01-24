@@ -32,7 +32,7 @@ public class ItemController extends BaseController {
                                    @RequestParam(name = "imgUrl") String imgUrl) throws Exception {
         //创建商品model
         ItemModel itemModel = new ItemModel();
-        itemModel.setName(title);
+        itemModel.setTitle(title);
         itemModel.setPrice(price);
         itemModel.setStock(stock);
         itemModel.setDescription(description);

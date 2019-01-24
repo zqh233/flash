@@ -17,7 +17,7 @@ public class ItemModel {
      * 商品名称
      */
     @NotBlank(message = "商品名称不能为空")
-    private String name;
+    private String title;
 
     /**
      * 商品价格
@@ -58,12 +58,12 @@ public class ItemModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public BigDecimal getPrice() {
